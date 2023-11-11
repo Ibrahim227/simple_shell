@@ -47,18 +47,21 @@ ssize_t write(int fd, const void *buf, size_t count);
 
 
 /**
- * dirent - manage directory
- * 
+ * struct dirent - manage directory
+ * @d_ino: Inode number
+ * @d_off: Not an Offset
+ * @d_reclen: length of the record
+ * @d_type: type of file
+ * @d_name: variable name
+ *
  * Return: Always 0
  */
-struct dirent {
+struct dirent
+{
 	ino_t	d_ino;
-	off_t 	d_off;
+	off_t	d_off;
 	unsigned short d_reclen;
 	unsigned char d_type;
-	char 	d_name[256];
+	char	d_name[256];
 };
-
-
-
 #endif
