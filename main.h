@@ -30,6 +30,13 @@ void *_realloc(void *ptr, size_t size);
 char *_strdup(char *str);
 char *_strcat(char *dest, const char *src);
 char *_strchr(const char *strse, int strfi);
+void print_list(struct Node *head);
+void free_list(struct Node *head);
+int _env(void);
+int _setenv(const char *name, const char *value);
+int _unsetenv(const char *name);
+
+
 
 /**
 * struct Node - singly linked listed
