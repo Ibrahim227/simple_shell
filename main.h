@@ -1,5 +1,5 @@
-#ifndef __MAIN_H__
-#define __MAIN_H__
+#ifndef MAIN_H
+#define MAIN_H
 
 #include<unistd.h>
 #include<fcntl.h>
@@ -14,54 +14,93 @@
 #include<sys/resource.h>
 #include<sys/time.h>
 
-int access(const char *pathname, int mode);
-int chdir(const char *path);
-int close(int fd);
-int closedir(DIR *dirp);
-int execve(const char *pathname, char *const argv[], char *const envp[]);
-void exit(int status);
-void _exit(int status);
-int fflush(FILE *stream);
-pid_t fork(void);
-void free(void *ptr);
-char *getcwd(char *buf, size_t size);
-ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-pid_t getpid(void);
-int isatty(int fd);
-int kill(pid_t pid, int sig);
-void *malloc(size_t size);
-int open(const char *pathname, int flags);
-int open(const char *pathname, int flags, mode_t mode);
-DIR *opendir(const char *name);
-void perror(const char *s);
-ssize_t read(int fd, void *buf, size_t count);
-struct dirent *readdir(DIR *dirp);
-typedef void (*sighandler_t)(int);
-int stat(const char *pathname, struct stat *statbuf);
-int lstat(const char *pathname, struct stat *statbuf);
-int fstat(int fd, struct stat *statbuf);
-pid_t waitpid(pid_t pid, int *wstatus, int options);
-pid_t wait3(int *wstatus, int options, struct rusage *rusage);
-pid_t wait4(pid_t pid, int *wstatus, int options, struct rusage *rusage);
-ssize_t write(int fd, const void *buf, size_t count);
+/*Handle Macros*/
+#define BUFFER_SIZE 6024
+#define MAX_ARGS 2048
+
+extern char **environ;
+extern int out_code;
+
+/*Protottype*/
+char *_getenv(char *str);
+char *_getline(void);
+void hash_handler(char *buff);
+void *_memcpy(void *src, void *dest, size_t num);
+void *_realloc(void *ptr, size_t size);
+char *_strdup(char *str);
+char *_strcat(char *dest, const char *src);
+char *_strchr(const char *strse, int strfi);
+
+/**
+* struct Node - singly linked listed
+* @str: str
+* @next: a pointer to the next node
+*/
+struct Node
+{
+	char *str;
+	struct Node *next;
+};
+
+static struct Node *beg_node(char *str) UNUSED;
+/**
+* beg_node - create a new bode
+* @str: str to be stored
+* Return: 0
+*/
+static void Node *beg_node(char *str)
+{
+	struct Node *node = malloc(sizeof(struct Node));
+
+	if (node == NULL)
+		return (NULL);
+
+	node->str = str
+	node->next = NULL;
+	return (node);
+}
+
+static void end_node(struct Node **head, struct Node *node) UNUSED;
+/**
+* end_node - add a node to the end of linked list
+* @head: pointer to head
+* @node: node to be added
+* Return: 0
+*/
+static void end_node(struct Node **head, struct Node *node)
+{
+	if (*head == NULL)
+		*head = node;
+	else
+	{
+		struct Node curent = *head;
+
+		while (curent->next != NULL)
+			curent = curent->next;
+		curent->next = node;
+	}
+}
 
 
 /**
- * struct dirent - manage directory
- * @d_ino: Inode number
- * @d_off: Not an Offset
- * @d_reclen: length of the record
- * @d_type: type of file
- * @d_name: variable name
- *
- * Return: Always 0
- */
-struct dirent
+* struct original_s - a struct represent an alias
+* @name: alias name
+* @value: alias value
+* @next: a pointer to the next alias
+* Return: alias
+*/
+typedef struct original_s
 {
-	ino_t	d_ino;
-	off_t	d_off;
-	unsigned short d_reclen;
-	unsigned char d_type;
-	char	d_name[256];
-};
-#endif
+	char *name;
+	char *value;
+	struct original_s *next;
+} original_t;
+
+void _exec(char **_argnum, char *vv, int cnt);
+void _execve(char *cm, char **parg, char **rev);
+void _perror(char *err, int cnt, char *cname);
+void _print(char *z);
+void _pnumber(int m)void _pnumber(int m);
+
+
+#endif /*MAIN_H*/
