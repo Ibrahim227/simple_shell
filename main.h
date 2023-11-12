@@ -30,12 +30,7 @@ void *_realloc(void *ptr, size_t size);
 char *_strdup(char *str);
 char *_strcat(char *dest, const char *src);
 char *_strchr(const char *strse, int strfi);
-void print_list(struct Node *head);
-void free_list(struct Node *head);
-int _env(void);
-int _setenv(const char *name, const char *value);
-int _unsetenv(const char *name);
-
+void cd(char *path);
 
 
 /**
@@ -49,7 +44,6 @@ struct Node
 	struct Node *next;
 };
 
-static struct Node *beg_node(char *str) UNUSED;
 /**
 * beg_node - create a new bode
 * @str: str to be stored
@@ -66,8 +60,6 @@ static void Node *beg_node(char *str)
 	node->next = NULL;
 	return (node);
 }
-
-static void end_node(struct Node **head, struct Node *node) UNUSED;
 /**
 * end_node - add a node to the end of linked list
 * @head: pointer to head
@@ -87,7 +79,13 @@ static void end_node(struct Node **head, struct Node *node)
 		curent->next = node;
 	}
 }
-
+int _env(void);
+int _setenv(const char *name, const char *value);
+void add_env_v(struct Node **head, const char *name, const char *value);
+void update_env(struct Node *head);
+int _unsetenv(const char *name);
+void free_list(struct Node *head);
+void print_list(struct Node *head);
 
 /**
 * struct original_s - a struct represent an alias
@@ -107,7 +105,7 @@ void _exec(char **_argnum, char *vv, int cnt);
 void _execve(char *cm, char **parg, char **rev);
 void _perror(char *err, int cnt, char *cname);
 void _print(char *z);
-void _pnumber(int m)void _pnumber(int m);
+void _pnumber(int m);
 
 
 #endif /*MAIN_H*/
