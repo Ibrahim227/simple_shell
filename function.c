@@ -21,7 +21,7 @@ void add_env_v(struct Node **head, const char *name, const char *value)
 
 	_memcpy(new_env_v, (void *)name, name1);
 	new_env_v[name1] = '=';
-	_memcpy(new_env_v + nqme1 + 1, (void *)value, value_le);
+	_memcpy(new_env_v + name1 + 1, (void *)value, value_le);
 	new_env_v[name1 + value_le + 1] = '\0';
 
 	while  (curent != NULL)

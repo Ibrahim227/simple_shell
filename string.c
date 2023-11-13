@@ -6,19 +6,19 @@
 * @str2: str 2
 * Return: 0
 */
-int _strcmp(const char *str1, const char str2)
+int _strcmp(const char *str1, const char *str2)
 {
 	int j = 0;
 
 	while (str1[j] != '\0' && str2[j] != '\0')
 	{
-		if (str[j] != str2[j])
+		if (str1[j] != str2[j])
 		{
-			return (str[j] - str2[j]);
+			return (str1[j] - str2[j]);
 		}
 		j++;
 	}
-	return (str[j] - str2[j]);
+	return (str1[j] - str2[j]);
 }
 
 /**

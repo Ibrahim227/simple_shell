@@ -30,12 +30,13 @@ void *_memcpy(void *src, void *dest, size_t num);
 void *_realloc(void *ptr, size_t size);
 char *_strdup(char *str);
 char *_strcat(char *dest, const char *src);
-int _strcmp(const char *str1, const char str2);
+int _strcmp(const char *str1, const char *str2);
 int _strncmp(const char *st1, const char *st2, size_t m);
 int _strlen(const char *str);
 int _strncpy(char *dest, char *src, int size);
 int _strcpy(char *dest, char *src);
-void avoid_segfault(int signumber __attrribute__((unused)));
+void avoid_segfault(int signumber __attribute__((unused)));
+int ver_access(char *arg, char *cmd, char *err, int cnt, char **ev);
 char *which(char *cmmd);
 void cd(char *path);
 int _putchar(char c);
@@ -51,7 +52,8 @@ struct Node
 	struct Node *next;
 };
 
-static struct Node *beg_node(char *str) UNUSED;
+
+/*static struct Node *beg_node(char *str) UNUSED;*/
 /**
 * beg_node - create a new bode
 * @str: str to be stored
@@ -69,7 +71,7 @@ static struct Node *beg_node(char *str)
 	return (node);
 }
 
-static void end_node(struct Node **head, struct Node *node) UNUSED;
+/*static void end_node(struct Node **head, struct Node *node) UNUSED;*/
 /**
 * end_node - add a node to the end of linked list
 * @head: pointer to head
@@ -98,24 +100,24 @@ void free_list(struct Node *head);
 void print_list(struct Node *head);
 
 /**
-* struct original_s - a struct represent an origin
+* struct original - a struct represent an origin
 * @name: alias name
 * @value: alias value
 * @next: a pointer to the next origin
 * Return: origin
 */
-typedef struct original_s
+typedef struct original
 {
 	char *name;
 	char *value;
-	struct original_s *next;
+	struct original *next;
 } original_t;
 
-void init_origin(original_t **origin)
+void init_original(original_t **origin);
 int origin_command(char *argv[MAX_ARGS], int argnum __attribute__((unused)));
-void set_origin(original_t **origin, char *name, char *value);
-void print_origin(original_t *org);
-void print_all_origin(original_t *origin);
+void set_original(original_t **origin, char *name, char *value);
+void print_original(original_t *org);
+void print_all_original(original_t *origin);
 char *_strchr(const char *strse, int strfi);
 void _exec(char **_argnum, char *vv, int cnt);
 void _execve(char *cm, char **parg, char **rev);

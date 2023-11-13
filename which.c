@@ -39,15 +39,15 @@ char *which(char *cmmd)
 }
 
 /**
-* print_all_origin - print
+* print_all_original - print
 * @origin: origin
 * Return: origin
 */
-void print_all_origin(original_t *origin)
+void print_all_original(original_t *origin)
 {
 	original_t *org;
 
 	for (org = origin; org; org = org->next)
-		print_origin(org);
+		print_original(org);
 }
 

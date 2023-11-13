@@ -1,16 +1,16 @@
 #include "main.h"
 
 /**
-* init_origin - initialize alias
+* init_original - initialize alias
 * @origin: head of ll
 * Return: alias
 */
-void init_origin(original_t **origin)
+void init_original(original_t **origin)
 {
-	set_origin(origin, "l", "ls -CF");
-	set_origin(origin, "la", "ls -A");
-	set_origin(origin, "ll", "ls -alF");
-	set_origin(origin, "ls", "ls --color=auto");
+	set_original(origin, "l", "ls -CF");
+	set_original(origin, "la", "ls -A");
+	set_original(origin, "ll", "ls -alF");
+	set_original(origin, "ls", "ls --color=auto");
 }
 
 /**
@@ -30,7 +30,7 @@ int origin_command(char *argv[MAX_ARGS], int argnum __attribute__((unused)))
 
 	if (!initial)
 	{
-		init_origin(*origin);
+		init_original(*origin);
 		initial = 1;
 	}
 
@@ -40,7 +40,7 @@ int origin_command(char *argv[MAX_ARGS], int argnum __attribute__((unused)))
 	if (argnum == 1)
 	{
 		for (org = origin; org; org->next)
-			print_origin(org);
+			print_original(org);
 		return (1);
 	}
 	for (i = 1; i < argnum; i++)
@@ -53,30 +53,32 @@ int origin_command(char *argv[MAX_ARGS], int argnum __attribute__((unused)))
 			value++;
 			if (*value == '\0')
 				continue;
-			set_origin(*origin, name, value);
+			set_original(*origin, name, value);
 		}
 		else
 		{
-			print_all_origin(origin);
+			print_all_original(origin);
 		}
 	}
 	return (1);
 }
 
 /**
-* set_origin - set an origin
+* set_original - set an origin
 * @origin: head of ll
 * @name: name of origin
 * @value: value of origin
 * Return: 0
 */
-void set_origin(original_t **origin, char *name, char *value)
+void set_original(original_t **origin, char *name, char *value)
 {
 	original_t *org;
 
 	for (org = *origin; org = org->next)
+	{
 		if (_strcmp(org->name, name) == 0)
 			break;
+	}
 	if (org)
 	{
 		free(org->value);
@@ -96,11 +98,11 @@ void set_origin(original_t **origin, char *name, char *value)
 }
 
 /**
-* print_origin - prints an origin
+* print_original - prints an origin
 * @org: the origin to print
 * Return: 0
 */
-void print_origin(original_t *org)
+void print_original(original_t *org)
 {
 	if (org->value[0] != '\'')
 	{
