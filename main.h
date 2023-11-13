@@ -30,6 +30,11 @@ void *_realloc(void *ptr, size_t size);
 char *_strdup(char *str);
 char *_strcat(char *dest, const char *src);
 char *_strchr(const char *strse, int strfi);
+int _strcmp(const char *str1, const char str2);
+int _strncmp(const char *st1, const char *st2, size_t m);
+int _strlen(const char *str);
+int _strncpy(char *dest, char *src, int size);
+int _strcpy(char *dest, char *src);
 void cd(char *path);
 
 
