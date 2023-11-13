@@ -18,6 +18,7 @@
 #define BUFFER_SIZE 6024
 #define MAX_ARGS 2048
 
+static char *cmd __attribute__((unused));
 extern char **environ;
 extern int out_code;
 
@@ -34,8 +35,10 @@ int _strncmp(const char *st1, const char *st2, size_t m);
 int _strlen(const char *str);
 int _strncpy(char *dest, char *src, int size);
 int _strcpy(char *dest, char *src);
+void avoid_segfault(int signumber __attrribute__((unused)));
+char *which(char *cmmd);
 void cd(char *path);
-
+int _putchar(char c);
 
 /**
 * struct Node - singly linked listed
@@ -48,22 +51,25 @@ struct Node
 	struct Node *next;
 };
 
+static struct Node *beg_node(char *str) UNUSED;
 /**
 * beg_node - create a new bode
 * @str: str to be stored
 * Return: 0
 */
-static void Node *beg_node(char *str)
+static struct Node *beg_node(char *str)
 {
 	struct Node *node = malloc(sizeof(struct Node));
 
 	if (node == NULL)
 		return (NULL);
 
-	node->str = str
+	node->str = str;
 	node->next = NULL;
 	return (node);
 }
+
+static void end_node(struct Node **head, struct Node *node) UNUSED;
 /**
 * end_node - add a node to the end of linked list
 * @head: pointer to head
@@ -76,7 +82,7 @@ static void end_node(struct Node **head, struct Node *node)
 		*head = node;
 	else
 	{
-		struct Node curent = *head;
+		struct Node *curent = *head;
 
 		while (curent->next != NULL)
 			curent = curent->next;
@@ -92,11 +98,11 @@ void free_list(struct Node *head);
 void print_list(struct Node *head);
 
 /**
-* struct original_s - a struct represent an alias
+* struct original_s - a struct represent an origin
 * @name: alias name
 * @value: alias value
-* @next: a pointer to the next alias
-* Return: alias
+* @next: a pointer to the next origin
+* Return: origin
 */
 typedef struct original_s
 {
@@ -104,6 +110,7 @@ typedef struct original_s
 	char *value;
 	struct original_s *next;
 } original_t;
+
 void init_origin(original_t **origin)
 int origin_command(char *argv[MAX_ARGS], int argnum __attribute__((unused)));
 void set_origin(original_t **origin, char *name, char *value);
