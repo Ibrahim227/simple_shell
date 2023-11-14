@@ -1,19 +1,19 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include<stddef.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<sys/types.h>
-#include<dirent.h>
-#include<stdlib.h>
-#include<stdio.h>
-#include<signal.h>
-#include<sys/stat.h>
-#include<string.h>
-#include<sys/wait.h>
-#include<sys/resource.h>
-#include<sys/time.h>
+#include <stddef.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <dirent.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <signal.h>
+#include <sys/stat.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <sys/resource.h>
+#include <sys/time.h>
 
 /*Handle Macros*/
 #define BUFFER_SIZE 6024
@@ -41,9 +41,6 @@ int process_cmd(char **argv);
 void avoid_segfault(int signumber __attribute__((unused)));
 int ver_access(char *arg, char *cmd, char *err, int cnt, char **ev);
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)));
-void hand_sigint(int signumber __attribute__((unused)));
-int wspace(char c);
-void remspace(char *c);
 void token_flag(char *command, char *argv[MAX_ARGS]);
 int argnums(char *argv[]);
 int _atoi(const char *str);
@@ -104,14 +101,16 @@ static void last_node(struct Node **head, struct Node *node)
 		curent->next = node;
 	}
 }
+void print_list(struct Node *head);
+void free_list(struct Node *head);
 int _env(void);
 int _setenv(const char *name, const char *value);
 void add_env_v(struct Node **head, const char *name, const char *value);
 void update_env(struct Node *head);
 int _unsetenv(const char *name);
-void free_list(struct Node *head);
-void print_list(struct Node *head);
-
+void hand_sigint(int signumber __attribute__((unused)));
+void remspace(char *c);
+int wspace(char c);
 /**
 * struct original_s - a struct represent an origin
 * @name: alias name

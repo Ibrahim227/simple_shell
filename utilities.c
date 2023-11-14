@@ -50,7 +50,7 @@ void token_flag(char *command, char *argv[MAX_ARGS])
 		argv[j++] = token;
 		token = _strtok(NULL, " ");
 	}
-	argv[i] = NULL;
+	argv[j] = NULL;
 }
 
 /**
