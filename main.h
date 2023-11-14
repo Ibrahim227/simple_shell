@@ -3,21 +3,18 @@
 
 #include <stddef.h>
 #include <unistd.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <dirent.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
-#include <sys/stat.h>
-#include <string.h>
 #include <sys/wait.h>
-#include <sys/resource.h>
-#include <sys/time.h>
+#include <errno.h>
+
 
 /*Handle Macros*/
 #define BUFFER_SIZE 6024
 #define MAX_ARGS 2048
+#define UNUSED __ATTRIBUTE__((unused))
+
 
 static char *cmd __attribute__((unused));
 extern char **environ;
@@ -63,9 +60,9 @@ struct Node
 };
 
 
-/*static struct Node *beg_node(char *str) UNUSED;*/
+/*static struct Node *start_node(char *str) UNUSED;*/
 /**
-* beg_node - create a new bode
+* start_node - create a new bode
 * @str: str to be stored
 * Return: 0
 */
@@ -81,9 +78,9 @@ static struct Node *start_node(char *str)
 	return (node);
 }
 
-/*static void end_node(struct Node **head, struct Node *node) UNUSED;*/
+/*static void last_node(struct Node **head, struct Node *node) UNUSED;*/
 /**
-* end_node - add a node to the end of linked list
+* last_node - add a node to the end of linked list
 * @head: pointer to head
 * @node: node to be added
 * Return: 0
@@ -101,6 +98,7 @@ static void last_node(struct Node **head, struct Node *node)
 		curent->next = node;
 	}
 }
+
 void print_list(struct Node *head);
 void free_list(struct Node *head);
 int _env(void);

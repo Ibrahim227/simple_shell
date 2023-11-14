@@ -17,7 +17,7 @@ void _exec(char **_argnum, char *vv, int cnt)
 	out_code = 0;
 	if (_argnum[0][0] == '/')
 	{
-		if (ver_access(_argnum, NULL, err, cnt, environ)
+		if (ver_access(_argnum, NULL, err, cnt, environ))
 			return;
 	}
 	else
@@ -30,7 +30,7 @@ void _exec(char **_argnum, char *vv, int cnt)
 				_perror(err, cnt, _argnum[0]);
 				return;
 			}
-			if (ver_access(_argnum, cmd0, err, cnt, environ))
+			if (ver_access(_argnum, cmdl, err, cnt, environ))
 				return;
 			free(cmdl);
 		}
