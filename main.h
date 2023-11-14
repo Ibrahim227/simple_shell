@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include<stddef.h>
 #include<unistd.h>
 #include<fcntl.h>
 #include<sys/types.h>
@@ -35,8 +36,15 @@ int _strncmp(const char *st1, const char *st2, size_t m);
 int _strlen(const char *str);
 int _strncpy(char *dest, char *src, int size);
 int _strcpy(char *dest, char *src);
+void _perrore(char *err, int cnt, char *s, char *argum);
+int process_cmd(char **argv);
 void avoid_segfault(int signumber __attribute__((unused)));
 int ver_access(char *arg, char *cmd, char *err, int cnt, char **ev);
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)));
+void hand_sigint(int signumber __attribute__((unused)));
+int wspace(char c);
+void remspace(char *c);
+char *read_cmd(void);
 char *which(char *cmmd);
 void cd(char *path);
 int _putchar(char c);
@@ -59,7 +67,7 @@ struct Node
 * @str: str to be stored
 * Return: 0
 */
-static struct Node *beg_node(char *str)
+static struct Node *start_node(char *str)
 {
 	struct Node *node = malloc(sizeof(struct Node));
 
@@ -78,7 +86,7 @@ static struct Node *beg_node(char *str)
 * @node: node to be added
 * Return: 0
 */
-static void end_node(struct Node **head, struct Node *node)
+static void last_node(struct Node **head, struct Node *node)
 {
 	if (*head == NULL)
 		*head = node;
@@ -100,17 +108,17 @@ void free_list(struct Node *head);
 void print_list(struct Node *head);
 
 /**
-* struct original - a struct represent an origin
+* struct original_s - a struct represent an origin
 * @name: alias name
 * @value: alias value
 * @next: a pointer to the next origin
 * Return: origin
 */
-typedef struct original
+typedef struct original_s
 {
 	char *name;
 	char *value;
-	struct original *next;
+	struct original_s *next;
 } original_t;
 
 void init_original(original_t **origin);
