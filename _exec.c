@@ -9,7 +9,7 @@
 */
 void _exec(char **_argnum, char *vv, int cnt)
 {
-	char cmdl;
+	char *cmdl;
 	char err[50];
 	int status;
 
