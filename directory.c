@@ -11,10 +11,11 @@ void cd(char *path)
 	char *home = _getenv("HOME");
 	char *oldpwd = _getenv("OLDPWD");
 	char *pwd = _getenv("PWD");
+	char cwd[2048];
 
 	if (path == NULL)
 	{
-		if (chdir(home) == 1)
+		if (chdir(home) == -1)
 		{
 			perror("cd");
 			return;

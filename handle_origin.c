@@ -30,7 +30,7 @@ int origin_command(char *argv[MAX_ARGS], int argnum __attribute__((unused)))
 
 	if (!initial)
 	{
-		init_original(*origin);
+		init_original(&origin);
 		initial = 1;
 	}
 
@@ -39,7 +39,7 @@ int origin_command(char *argv[MAX_ARGS], int argnum __attribute__((unused)))
 
 	if (argnum == 1)
 	{
-		for (org = origin; org; org->next)
+		for (org = origin; org; org = org->next)
 			print_original(org);
 		return (1);
 	}
@@ -53,7 +53,7 @@ int origin_command(char *argv[MAX_ARGS], int argnum __attribute__((unused)))
 			value++;
 			if (*value == '\0')
 				continue;
-			set_original(*origin, name, value);
+			set_original(&origin, name, value);
 		}
 		else
 		{
@@ -74,7 +74,7 @@ void set_original(original_t **origin, char *name, char *value)
 {
 	original_t *org;
 
-	for (org = *origin; org = org->next)
+	for (org = *origin; org; org = org->next)
 	{
 		if (_strcmp(org->name, name) == 0)
 			break;

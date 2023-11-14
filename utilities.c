@@ -13,7 +13,7 @@ void rem_tl_space(char *str)
 
 	if (length > 0)
 	{
-		while (length > 0 && str(length - 1) == ' ')
+		while (length > 0 && str[length - 1] == ' ')
 			length--;
 		str[length] = '\0';
 	}

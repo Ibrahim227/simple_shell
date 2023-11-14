@@ -35,7 +35,7 @@ void add_env_v(struct Node **head, const char *name, const char *value)
 		curent = curent->next;
 	}
 
-	end_node(head, beg_node(new_env_v));
+	last_node(head, start_node(new_env_v));
 }
 
 /**

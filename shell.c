@@ -1,6 +1,5 @@
-"include "main.h"
+include "main.h"
 #include <string.h>
-#include <stdlib.h>
 
 void avoid_segfault(int signumber __attribute__((unused)));
 
@@ -24,10 +23,12 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		if (isatty(STDIN_FILENO))
 			write(1, "$ ", 2);
 		cmd = read_cmd;
+		if (cmd == NULL)
+			exit(out_code);
 		if (cmd[0] == '\0' || (_strcmp(cmd, "\n") == 0))
 			continue;
 		remspace(cmd);
-		copy_cmd = _strdup(cmd);
+		copy_cmd = strdup(cmd);
 		token_flag(copy_cmd, ar);
 		token_flag(cmd, argv);
 		if (cmd[0] == '\0' || (_strcmp(cmd, "\n") == 0))
@@ -45,7 +46,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 				continue;
 			exit(r);
 		}
-		if (process_cmd(argv), cnt)
+		if (process_cmd(argv) == 0)
 		{
 		}
 		else
@@ -77,7 +78,7 @@ int wspace(char c)
 void remspace(char *c)
 {
 	int len = _strlen(c);
-	int i = 0, j = len -1, k;
+	int i = 0, j = len - 1, k;
 	int l, cnt, m;
 
 	if (c == NULL)

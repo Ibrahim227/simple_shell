@@ -21,14 +21,14 @@ void print_list(struct Node *head)
 * Return: 0
 */
 void free_list(struct Node *head)
-{{
-	struct Node *tmp;
+{
+	struct Node *temp;
 
 	while (head != NULL)
 	{
-		tmp = head;
+		temp = head;
 		head = head->next;
-		free(tmp);
+		free(temp);
 	}
 }
 
@@ -43,10 +43,11 @@ int _env(void)
 
 	for (env = environ; *env != NULL; env++)
 	{
-		end_node(&head, beg_node(*env));
+		last_node(&head, start_node(*env));
 	}
 
 	print_list(head);
+
 	free_list(head);
 	return (0);
 }
@@ -64,12 +65,14 @@ int _setenv(const char *name, const char *value)
 
 	for (env = environ; *env != NULL; env++)
 	{
-		end_node(&head, beg_node(*env));
+		last_node(&head, start_node(*env));
 	}
 
-	add_env(&head, name, value);
+	add_env_v(&head, name, value);
 
 	update_env(head);
+	
+	free_list(head);
 	return (0);
 }
 
@@ -88,7 +91,7 @@ int _unsetenv(const char *name)
 	{
 		if (_strncmp(*env, name, length) == 0 && (*env)[len] == '=')
 		{
-			for (e = env; *ee != NULL; ee++)
+			for (ee = env; *ee != NULL; ee++)
 			{
 				*ee = *(ee + 1);
 			}

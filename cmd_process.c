@@ -47,9 +47,9 @@ int process_cmd(char **argv)
 * @err: error
 * @cnt: num count
 * @s: nameof cmd
-* @argum: cmd arg
+* @arg: cmd arg
 */
-void _perrore(char *err, int cnt, char *s, char *argum)
+void _perrore(char *err, int cnt, char *s, char *arg)
 {
 	_print(err);
 	_print(": ");
@@ -57,7 +57,7 @@ void _perrore(char *err, int cnt, char *s, char *argum)
 	_print(": ");
 	_print(s);
 	_print(": Wrong umber: ");
-	_print(argum);
+	_print(arg);
 	_print("\n");
 }
 

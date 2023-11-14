@@ -7,7 +7,7 @@
 * @num: size of memory
 * Return: mem
 */
-void *_memcpy(void *src, void *dest, size_t num)
+void *_memcpy(void *dest, void *src, size_t num)
 {
 	char *sdest = (char *)(dest);
 	const char *ssrc = (const char *)(src);
@@ -48,19 +48,19 @@ void *_realloc(void *ptr, size_t size)
 
 /**
 * _strdup - strdup()
-* @str: str
+* @ss: str
 * Return: dup of str
 */
-char *_strdup(char *str)
+char *_strdup(char *ss)
 {
-	size_t length = _strlen(str) + 1;
+	size_t length = _strlen(ss) + 1;
 	char *n_str = malloc(length);
 
 	if (n_str == NULL)
 	{
 		return (NULL);
 	}
-	_memcpy(n_str, str, length);
+	_memcpy(n_str, ss, length);
 
 	return (n_str);
 }
@@ -74,7 +74,7 @@ char *_strdup(char *str)
 char *_strcat(char *dest, const char *src)
 {
 	char *pp = dest;
-	int i, j = 0;
+	int i = 0, j = 0;
 
 	while (dest[i] != '\0')
 	{
@@ -96,15 +96,15 @@ char *_strcat(char *dest, const char *src)
 * @strfi: str to find
 * Return: path
 */
-char *_strchr(const char *strse, int strfi)
+char *_strchr(const char *str, int strfi)
 {
-	while (*strse)
+	while (*str)
 	{
-		if (*strse == strfi)
+		if (*str == strfi)
 		{
-			return ((char *)strse);
+			return ((char *)str);
 		}
-		strse++;
+		str++;
 	}
 	return (NULL);
 }

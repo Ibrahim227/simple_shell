@@ -9,7 +9,7 @@
 * @ev: env variable
 * Return: 0
 */
-int ver_access(char *arg, char *cmd, char *err, int cnt, char **ev)
+int ver_access(char **arg, char *cmd, char *err, int cnt, char **ev)
 {
 	pid_t verid;
 	char *p = NULL;
