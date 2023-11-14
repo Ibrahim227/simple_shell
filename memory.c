@@ -92,7 +92,7 @@ char *_strcat(char *dest, const char *src)
 
 /**
 * _strchr - implementation of strchr
-* @strse: str to search
+* @str: str to search
 * @strfi: str to find
 * Return: path
 */

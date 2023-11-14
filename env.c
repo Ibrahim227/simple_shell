@@ -6,7 +6,7 @@
 * Return: output
 */
 void print_list(struct Node *head)
-}
+{
 	while (head != NULL)
 	{
 		write(STDOUT_FILENO, head->str,  _strlen(head->str));
@@ -71,7 +71,7 @@ int _setenv(const char *name, const char *value)
 	add_env_v(&head, name, value);
 
 	update_env(head);
-	
+
 	free_list(head);
 	return (0);
 }
@@ -89,7 +89,7 @@ int _unsetenv(const char *name)
 
 	for (env = environ; *env != NULL; env++)
 	{
-		if (_strncmp(*env, name, length) == 0 && (*env)[len] == '=')
+		if (_strncmp(*env, name, length) == 0 && (*env)[length] == '=')
 		{
 			for (ee = env; *ee != NULL; ee++)
 			{

@@ -26,7 +26,7 @@ int process_cmd(char **argv)
 	{
 		if (argnumb == 3)
 		{
-			_setenv(argv[1]m argv[2]);
+			_setenv(argv[1], argv[2]);
 			return (0);
 		}
 	}
@@ -34,7 +34,7 @@ int process_cmd(char **argv)
 	{
 		if (argnumb == 2)
 		{
-			_unsetenv(arg[1]);
+			_unsetenv(argv[1]);
 			return (0);
 		}
 	}

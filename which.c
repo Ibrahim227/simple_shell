@@ -2,39 +2,39 @@
 
 /**
 * which - which func
-* @cmmd: command
+* @command: command
 * Return: path
 */
 
-char *which(char *cmmd)
+char *which(char *command)
 {
 	char *path = _getenv("PATH");
-	char *copy_path;
-	char *direct;
+	char *cp_path;
+	char *dir;
 
 	if (path == NULL)
 	{
 		return (NULL);
 	}
-	copy_path = _strdup(path);
-	direct = _strtok(copy_path, ":");
+	cp_path = _strdup(path);
+	dir = _strtok(cp_path, ":");
 
-	while (direct != NULL)
+	while (dir != NULL)
 	{
 		char full_path[1024];
 
-		_strcpy(full_path, direct);
+		_strcpy(full_path, dir);
 		_strcat(full_path, "/");
-		_strcat(full_path, cmmd);
+		_strcat(full_path, command);
 
 		if (access(full_path, X_OK) == 0)
 		{
-			free(copy_path);
+			free(cp_path);
 			return (_strdup(full_path));
 		}
-		direct = _strtok(NULL, ":");
+		dir = _strtok(NULL, ":");
 	}
-	free(copy_path);
+	free(cp_path);
 	return (NULL);
 }
 

@@ -42,7 +42,7 @@ void token_flag(char *command, char *argv[MAX_ARGS]);
 int argnums(char *argv[]);
 int _atoi(const char *str);
 char *read_cmd(void);
-char *which(char *cmmd);
+char *which(char *command);
 void cd(char *path);
 int _putchar(char c);
 void rem_tl_space(char *str);

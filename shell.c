@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 #include <string.h>
 
 void avoid_segfault(int signumber __attribute__((unused)));
@@ -22,7 +22,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		cnt++;
 		if (isatty(STDIN_FILENO))
 			write(1, "$ ", 2);
-		cmd = read_cmd;
+		cmd = read_cmd();
 		if (cmd == NULL)
 			exit(out_code);
 		if (cmd[0] == '\0' || (_strcmp(cmd, "\n") == 0))
