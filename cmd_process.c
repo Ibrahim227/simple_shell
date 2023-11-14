@@ -7,7 +7,7 @@
 */
 int process_cmd(char **argv)
 {
-	int argnumb = argnum(argv);
+	int argnumb = argnums(argv);
 
 	if (_strcmp(argv[0], "cd") == 0)
 	{

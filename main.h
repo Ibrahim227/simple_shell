@@ -44,10 +44,15 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)));
 void hand_sigint(int signumber __attribute__((unused)));
 int wspace(char c);
 void remspace(char *c);
+void token_flag(char *command, char *argv[MAX_ARGS]);
+int argnums(char *argv[]);
+int _atoi(const char *str);
 char *read_cmd(void);
 char *which(char *cmmd);
 void cd(char *path);
 int _putchar(char c);
+void rem_tl_space(char *str);
+int _lexit(char *status __attribute__((unused)), int cnt, char *s, char **asg);
 
 /**
 * struct Node - singly linked listed
