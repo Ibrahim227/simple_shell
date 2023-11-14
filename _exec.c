@@ -9,7 +9,7 @@
 */
 void _exec(char **_argnum, char *vv, int cnt)
 {
-	char cmd0;
+	char cmdl;
 	char err[50];
 	int status;
 
@@ -24,20 +24,20 @@ void _exec(char **_argnum, char *vv, int cnt)
 	{
 		if (_argnum[0][0] != '.')
 		{
-			cmd0 = which(_argnum[0]);
-			if (cmd0 == NULL)
+			cmdl = which(_argnum[0]);
+			if (cmdl == NULL)
 			{
 				_perror(err, cnt, _argnum[0]);
 				return;
 			}
 			if (ver_access(_argnum, cmd0, err, cnt, environ))
 				return;
-			free(cmd0);
+			free(cmdl);
 		}
 		else
 		{
-			cmd0 = _argnum[0];
-			if (ver_access(_argnum, cmd0, err, cnt, environ))
+			cmdl = _argnum[0];
+			if (ver_access(_argnum, cmdl, err, cnt, environ))
 				return;
 		}
 	}
