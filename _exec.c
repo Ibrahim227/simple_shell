@@ -10,12 +10,12 @@
 void _exec(char **_argnum, char *vv, int cnt)
 {
 	char cmd0;
-	char err[60];
+	char err[50];
 	int status;
 
 	_strcpy(err, vv);
 	out_code = 0;
-	if (argnum[0][0] == '/')
+	if (_argnum[0][0] == '/')
 	{
 		if (ver_access(_argnum, NULL, err, cnt, environ)
 			return;
