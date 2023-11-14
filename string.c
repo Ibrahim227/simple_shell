@@ -32,7 +32,7 @@ int _strncmp(const char *st1, const char *st2, size_t m)
 {
 	size_t i = 0;
 
-	while (i < 0 && st1[i] != '\0' && st2[i] != '\0')
+	while (i < m && st1[i] != '\0' && st2[i] != '\0')
 	{
 		if (st1[i] != st2[i])
 		{
