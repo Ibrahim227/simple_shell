@@ -1,2 +1,1 @@
-Our simple shell Project Ibrahim and Gigi
-
+Our simple shell Project Ibrahim and Gigi Ivy.
