@@ -107,6 +107,9 @@ int _myexit(alias_t *info);
 int _mycd(alias_t *info);
 int _myhelp(alias_t *info);
 
-
-
+int _myhistory(alias_t *info);
+int unset_alias(alias_t *info, char *str);
+int set_alias(alias_t *info, char *str);
+int print_alias(alias_t *node);
+int _myalias(alias_t *info);
 #endif /*MAIN_H*/
