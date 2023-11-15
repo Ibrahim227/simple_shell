@@ -89,6 +89,29 @@ typedef struct information
 	int histcount;
 } alias_t;
 
+#define ENTRY_INITIALYZER \
+    { \
+        NULL,    /* member1 */ \
+        NULL,    /* member2 */ \
+        NULL,    /* member3 */ \
+        0,       /* member4 */ \
+        0,       /* member5 */ \
+        0,       /* member6 */ \
+        0,       /* member7 */ \
+        NULL,    /* member8 */ \
+        NULL,    /* member9 */ \
+        NULL,    /* member10 */ \
+        NULL,    /* member11 */ \
+        NULL,    /* member12 */ \
+        0,       /* member13 */ \
+        0,       /* member14 */ \
+        NULL,    /* member15 */ \
+        0,       /* member16 */ \
+        0,       /* member17 */ \
+        0        /* member18 */ \
+    }
+
+
 /**
 * struct builtlegacy - contains builtin
 * @type: the legacy cmd
@@ -127,7 +150,6 @@ void _eputs(char *str);
 int _eputchar(char s);
 int _putfd(char s, int fd);
 int _putsfd(char *str, int fd);
-int _putchar(char c);
 
 int _erratoi(char *c);
 void print_error(alias_t *info, char *erstr);
@@ -164,5 +186,39 @@ node_t *add_node_end(node_t **head, const char *str, int num);
 size_t print_list_str(const node_t *hh);
 int delete_node_at(node_t **head, unsigned int idx);
 void free_list(node_t **head_p);
+
+size_t list_len(const node_t *hp);
+char **list_to_str(node_t *head);
+size_t print_list(const node_t *hp);
+node_t *node_start_with(node_t *node, char *prefix, char c);
+ssize_t get_node_index(node_t *head, node_t *node);
+
+int main(int ac, char **av);
+
+int bfree(void **ptr);
+
+int is_cmd(alias_t *info, char *path);
+char *dup_chars(char *pathstr, int start, int stop);
+char *find_path(alias_t *info, char *pathstr, char *cmd);
+
+char *_memset(char *s, char ab, unsigned int nn);
+void ffree(char **ptr);
+void *_realloc(void *ptr, unsigned int old_sz, unsigned int new_sz);
+
+int hsh(alias_t *info, char **av);
+int find_builtin(alias_t *info);
+void find_cmd(alias_t *info);
+void fork_cmd(alias_t *info);
+
+
+int _strlen(char *c);
+int _strcmp(char *s1, char *s2);
+char *start_with(const char *has, const char *nee);
+char *_strcat(char *dest, char *src);
+
+char *_strcpy(char *dest, char *src);
+char *_strdup(const char *str);
+void _puts(char *str);
+int _putchar(char c);
 
 #endif /*MAIN_H*/
