@@ -37,9 +37,9 @@ int _mycd(alias_t *info)
 	char *c, *dir, bufer[1024];
 	int chdir_r;
 
-	c = getcwd(buffer, 1024);
+	c = getcwd(bufer, 1024);
 	if (!c)
-		_puts("TODO: >>Ggetcwd failure emsghere<<\n");
+		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
 		dir = _getenv(info, "HOME=");
@@ -60,12 +60,11 @@ int _mycd(alias_t *info)
 		chdir_r = chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
-		chdir_r = chdir(info->argv[1];
-
+		chdir_r = chdir(info->argv[1]);
 	if (chdir_r == -1)
 	{
 		print_error(info, "cant cd to ");
-		_eputs(info->arv[1]), _eputchar('\n');
+		_eputs(info->argv[1]), _eputchar('\n');
 	}
 	else
 	{
@@ -75,6 +74,7 @@ int _mycd(alias_t *info)
 	return (0);
 }
 
+
 /**
 * _myhelp - chage the cwd
 * @info: struct
@@ -82,7 +82,7 @@ int _mycd(alias_t *info)
 */
 int _myhelp(alias_t *info)
 {
-	char **arg_arrr;
+	char **arg_arr;
 
 	arg_arr = info->argv;
 	_puts("help call works. function not imple;ented \n");

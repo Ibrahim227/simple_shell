@@ -57,7 +57,7 @@ int set_alias(alias_t *info, char *str)
 * @node: node
 * Return: 0
 */
-int print_alias(alias_t *node)
+int print_alias(node_t *node)
 {
 	char *p = NULL, *c = NULL;
 
@@ -83,7 +83,7 @@ int _myalias(alias_t *info)
 {
 	int i = 0;
 	char *p = NULL;
-	node_T *node = NULL;
+	node_t *node = NULL;
 
 	if (info->argc == 1)
 	{
