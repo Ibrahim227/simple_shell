@@ -16,7 +16,7 @@
 /*Handle Macros*/
 #define READ_BUFFER_SIZE 4096
 #define WRITE_BUFFER_SIZE 2048
-#define BUFF_FLUSH -1
+#define BUFFER_FLUSH -1
 
 
 extern char **environ;
@@ -112,4 +112,16 @@ int unset_alias(alias_t *info, char *str);
 int set_alias(alias_t *info, char *str);
 int print_alias(node_t *node);
 int _myalias(alias_t *info);
+
+void _eputs(char *str);
+int _eputchar(char s);
+int _putfd(char s, int fd);
+int _putsfd(char *str, int fd);
+
+int _erratoi(char *c);
+void print_error(alias_t *info, char erstr);
+int print_d(int tip, int fd);
+char *convert_number(long int num, int base, int flagg);
+void remove_com(char *buff);
+
 #endif /*MAIN_H*/
