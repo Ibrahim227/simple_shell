@@ -128,4 +128,12 @@ int print_d(int tip, int fd);
 char *convert_number(long int num, int base, int flagg);
 void remove_com(char *buff);
 
+char *_strncpy(char *dest, char *src, int m);
+char *_strncat(char *dest, char *src, int m);
+char *_strchr(char *s, char c);
+
+char **get_environ(alias_t *info);
+int _unsetenv(alias_t *info, char *va);
+int _setenv(alias_t *info, char *va, char *value);
+
 #endif /*MAIN_H*/
