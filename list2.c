@@ -60,7 +60,7 @@ char **list_to_str(node_t *head)
  *
  * Return: size of list
  */
-size_t print_list(const list_t *hp)
+size_t print_list(const node_t *hp)
 {
 	size_t i = 0;
 

@@ -35,7 +35,7 @@ ssize_t input_buffer(alias_t *info, char **buff, size_t *length)
 			/* if (_strchr(*buff, ';')) */
 			{
 				*length = r;
-				info->cmd_buff = buf;
+				info->cmd_buff = buff;
 			}
 		}
 	}
