@@ -26,6 +26,7 @@ char *_getline(void);
 void hash_handler(char *buff);
 void *_memcpy(void *src, void *dest, size_t num);
 void *_realloc(void *ptr, size_t size);
+char *which(char *command);
 char *_strdup(char *ss);
 char *_strcat(char *dest, const char *src);
 int _strcmp(const char *str1, const char *str2);
@@ -42,7 +43,6 @@ void token_flag(char *command, char *argv[MAX_ARGS]);
 int argnums(char *argv[]);
 int _atoi(const char *str);
 char *read_cmd(void);
-char *which(char *command);
 void cd(char *path);
 int _putchar(char c);
 void rem_tl_space(char *str);
@@ -60,13 +60,13 @@ struct Node
 };
 
 
-/*static struct Node *start_node(char *str) UNUSED;*/
+/*struct Node *start_node(char *str) UNUSED;*/
 /**
 * start_node - create a new bode
 * @str: str to be stored
 * Return: 0
 */
-static struct Node *start_node(char *str)
+struct Node *start_node(char *str)
 {
 	struct Node *node = malloc(sizeof(struct Node));
 
@@ -78,14 +78,14 @@ static struct Node *start_node(char *str)
 	return (node);
 }
 
-/*static void last_node(struct Node **head, struct Node *node) UNUSED;*/
+/*void last_node(struct Node **head, struct Node *node) UNUSED;*/
 /**
 * last_node - add a node to the end of linked list
 * @head: pointer to head
 * @node: node to be added
 * Return: 0
 */
-static void last_node(struct Node **head, struct Node *node)
+void last_node(struct Node **head, struct Node *node)
 {
 	if (*head == NULL)
 		*head = node;
