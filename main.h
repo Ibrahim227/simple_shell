@@ -221,4 +221,7 @@ char *_strdup(const char *str);
 void _puts(char *str);
 int _putchar(char c);
 
+char **strtow(char *str, char *dem);
+char **strtow2(char *str, char dem);
+
 #endif /*MAIN_H*/
