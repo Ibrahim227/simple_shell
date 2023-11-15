@@ -14,25 +14,25 @@
 
 
 /*Handle Macros*/
-#define READ_BUFFER_SIZE 4096
-#define WRITE_BUFFER_SIZE 4096
-#define BUFFER_FLUSH -1
+#define READ_BUFFER_SIZE	4096
+#define WRITE_BUFFER_SIZE	4096
+#define BUFFER_FLUSH	-1
 
-#define LOWERCASE 1
-#define CON_UNSIGNED 2
+#define LOWERCASE	1
+#define CON_UNSIGNED	2
 
-#define GRANT_GETLINE 0
-#define GRANT_STRTOK 0
+#define GRANT_GETLINE	0
+#define GRANT_STRTOK	0
 
-#define GRANT_HIST_FILE ".main_shell_history"
-#define GRANT_HISTORY_MAX 5024
+#define GRANT_HIST_FILE	".main_shell_history"
+#define GRANT_HISTORY_MAX	5048
 
-#define COMMAND_NORMAL 0
-#define COMMAND_OR 1
-#define COMMAND_AND 2
-#define COMMAND_CHAIN 3
+extern char **environ;
 
-char **environ;
+#define COMMAND_NORMAL	0
+#define COMMAND_OR	1
+#define COMMAND_AND	2
+#define COMMAND_CHAIN	3
 
 
 /**
@@ -93,26 +93,26 @@ typedef struct information
 } alias_t;
 
 #define ENTRY_INITIALYZER \
-    { \
-        NULL,    /* member1 */ \
-        NULL,    /* member2 */ \
-        NULL,    /* member3 */ \
-        0,       /* member4 */ \
-        0,       /* member5 */ \
-        0,       /* member6 */ \
-        0,       /* member7 */ \
-        NULL,    /* member8 */ \
-        NULL,    /* member9 */ \
-        NULL,    /* member10 */ \
-        NULL,    /* member11 */ \
-        NULL,    /* member12 */ \
-        0,       /* member13 */ \
-        0,       /* member14 */ \
-        NULL,    /* member15 */ \
-        0,       /* member16 */ \
-        0,       /* member17 */ \
-        0        /* member18 */ \
-    }
+	{ \
+	NULL,    /* member1 */ \
+	NULL,    /* member2 */ \
+	NULL,    /* member3 */ \
+	0,       /* member4 */ \
+	0,       /* member5 */ \
+	0,       /* member6 */ \
+	0,       /* member7 */ \
+	NULL,    /* member8 */ \
+	NULL,    /* member9 */ \
+	NULL,    /* member10 */ \
+	NULL,    /* member11 */ \
+	NULL,    /* member12 */ \
+	0,       /* member13 */ \
+	0,       /* member14 */ \
+	NULL,    /* member15 */ \
+	0,       /* member16 */ \
+	0,       /* member17 */ \
+	0        /* member18 */ \
+}
 
 
 /**
