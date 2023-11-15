@@ -15,14 +15,21 @@
 
 /*Handle Macros*/
 #define READ_BUFFER_SIZE 4096
-#define WRITE_BUFFER_SIZE 2048
+#define WRITE_BUFFER_SIZE 4096
 #define BUFFER_FLUSH -1
 
 #define LOWERCASE 1
 #define CON_UNSIGNED 2
 
+#define GRANT_GETLINE 0
+#define GRANT_STRTOK 0
 
-extern char **environ;
+#define GRANT_HIST_FILE ".main_shell_history"
+#define GRANT_HISTORY_MAX 5024
+
+#define COMMAND_NORMAL 0
+
+char **environ;
 
 
 /**
@@ -140,5 +147,22 @@ void clear_infot(alias_t *info);
 void set_infot(alias_t *info, char **avv);
 void free_infot(alias_t *info, int all);
 
+ssize_t input_buffer(alias_t *info, char **buff, size_t *length);
+ssize_t get_inputt(alias_t *info);
+ssize_t read_buffer(alias_t *info, char *buff, size_t *sz);
+int _getline(alias_t *info, char **ptr, size_t *len);
+void sigint_handler(__attribute__((unused)) int signum);
+
+char *get_hist_file(alias_t *info);
+int write_hist(alias_t *info);
+int read_hist(alias_t *info);
+int build_hist_list(alias_t *info, char *buff, int linecount);
+int renum_hist(alias_t *info);
+
+node_t *add_node(node_t **head, const char *str, int num);
+node_t *add_node_end(node_t **head, const char *str, int num);
+size_t print_list_str(const node_t *hh);
+int delete_node_at(node_t **head, unsigned int idx);
+void free_list(node_t **head_p);
 
 #endif /*MAIN_H*/
