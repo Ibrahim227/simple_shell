@@ -36,7 +36,7 @@ typedef struct nodelist
 } node_t;
 
 /**
-* struct infopass - contains args
+* struct information - contains args
 * @arg: a str
 * @argv: an arrray
 * @path: path
@@ -56,11 +56,12 @@ typedef struct nodelist
 * @readfd: the fd
 * @histcount: count hist num
 */
-typedef struct infopass
+typedef struct information
 {
 	char *arg;
 	char **argv;
 	char *path;
+	int argc;
 	unsigned int line_count;
 	int err_num;
 	int line_count_flag;
@@ -76,7 +77,7 @@ typedef struct infopass
 	int cmd_buff_type;
 	int readfd;
 	int histcount;
-} alias_t
+} alias_t;
 
 /**
 * struct builtlegacy - contains builtin
@@ -87,12 +88,24 @@ typedef struct builtlegacy
 {
 	char *type;
 	int (*func)(alias_t *);
-} builtin_tab;
+} builtin_legacy;
 
 
 /*Prototype */
+int interactive(alias_t *info);
+int is_delim(char s, char *delim);
+int _isalpha(int s);
+int _atoi(char *c);
 
+int _myenv(alias_t *info);
+char *_getenv(alias_t *info, const char *name);
+int _mysetenv(alias_t *info);
+int _myunsetenv(alias_t *info);
+int pop_env_list(alias_t *info);
 
+int _myexit(alias_t *info);
+int _mycd(alias_t *info);
+int _myhelp(alias_t *info);
 
 
 
