@@ -28,6 +28,9 @@
 #define GRANT_HISTORY_MAX 5024
 
 #define COMMAND_NORMAL 0
+#define COMMAND_OR 1
+#define COMMAND_AND 2
+#define COMMAND_CHAIN 3
 
 char **environ;
 
@@ -223,5 +226,12 @@ int _putchar(char c);
 
 char **strtow(char *str, char *dem);
 char **strtow2(char *str, char dem);
+
+int is_chain(alias_t *info, char *buff, size_t *ptr);
+void ver_chain(alias_t *info, char *buff, size_t *ptr, size_t i, size_t len);
+int replace_alias(alias_t *info);
+int replace_vars(alias_t *info);
+int replace_str(char **old_str, char *new_str);
+
 
 #endif /*MAIN_H*/
