@@ -136,4 +136,9 @@ char **get_environ(alias_t *info);
 int _unsetenv(alias_t *info, char *va);
 int _setenv(alias_t *info, char *va, char *value);
 
+void clear_infot(alias_t *info);
+void set_infot(alias_t *info, char **avv);
+void free_infot(alias_t *info, int all);
+
+
 #endif /*MAIN_H*/
