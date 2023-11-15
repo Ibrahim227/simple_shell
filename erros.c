@@ -33,7 +33,7 @@ int _erratoi(char *c)
 * @erstr: str cpecififc
 * Return: 0 if numb -1 on error
 */
-void print_error(alias_t *info, char erstr)
+void print_error(alias_t *info, char *erstr)
 {
 	_eputs(info->fname);
 	_eputs(": ");
@@ -52,29 +52,31 @@ void print_error(alias_t *info, char erstr)
 */
 int print_d(int tip, int fd)
 {
-	int (*_putchar)(char) = _putchar;
-	int count, i = 0;
+	int (*__putchar)(char) = _putchar;
+	int i, count = 0;
 	unsigned int _abs_, actual;
 
 	if (fd == STDERR_FILENO)
+		__putchar = _eputchar;
+	if (tip < 0)
 	{
 		_abs_ = -tip;
-		_putchar('-');
+		__putchar('-');
 		count++;
 	}
 	else
 		_abs_ = tip;
 	actual = _abs_;
-	for (i = 100000000; i > 1; i / 10)
+	for (i = 100000000; i > 1; i /= 10)
 	{
 		if (_abs_ / i)
 		{
-			_putchar('0' + actual / i);
+			__putchar('0' + actual / i);
 			count++;
 		}
 		actual %= i;
 	}
-	_putchar('0' + actual);
+	__putchar('0' + actual);
 	count++;
 
 	return (count);
@@ -95,18 +97,18 @@ char *convert_number(long int num, int base, int flagg)
 	char *ptr;
 	unsigned long m = num;
 
-	if (!(flagg & CONVERT_UNSIGNED) && num < 0)
+	if (!(flagg & CON_UNSIGNED) && num < 0)
 	{
 		m = -num;
 		sig = '-';
 	}
-	arr = flagg & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	arr = flagg & LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
 	do {
-		*--p = arr[m % base];
-		n /= base;
+		*--ptr = arr[m % base];
+		m /= base;
 	} while (m != 0);
 
 	if (sig)

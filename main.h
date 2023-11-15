@@ -18,6 +18,9 @@
 #define WRITE_BUFFER_SIZE 2048
 #define BUFFER_FLUSH -1
 
+#define LOWERCASE 1
+#define CON_UNSIGNED 2
+
 
 extern char **environ;
 
@@ -117,9 +120,10 @@ void _eputs(char *str);
 int _eputchar(char s);
 int _putfd(char s, int fd);
 int _putsfd(char *str, int fd);
+int _putchar(char c);
 
 int _erratoi(char *c);
-void print_error(alias_t *info, char erstr);
+void print_error(alias_t *info, char *erstr);
 int print_d(int tip, int fd);
 char *convert_number(long int num, int base, int flagg);
 void remove_com(char *buff);
