@@ -9,10 +9,10 @@
 */
 int main(int argc, char **argv, char **env)
 {
-	char *blink = "($)", *box = NULL, **info = NULL;
+	char *blink = "$", *box = NULL, **info = NULL;
 	size_t shellSize = 0;
 	ssize_t readBytes;
-	long unsigned int i, exit_status = EXIT_SUCCESS;
+	unsigned long int i, exit_status = EXIT_SUCCESS;
 	(void) argc, (void) argv, (void) env;
 
 	while (TRUE)
@@ -62,10 +62,42 @@ int main(int argc, char **argv, char **env)
 				perror("cd");
 			}
 		}
-		if (execute_file(info) == EXIT_FAILURE)
-			exit_status = 127;
+		else if (compstr(info[0], "setenv") == 0)
+		{
+			if (info[0] != NULL && info[2] != NULL)
+			{
+				if (setenv(info[1], info[2], 1) != 0)
+				{
+					perror("setenv");
+				}
+			}
+			else
+			{
+				fprintf(stderr, "Usage: setenv VARIABLE VAlUE\n");
+			}
+		}
+		else if (compstr(info[0], "unsetenv") == 0)
+		{
+			if (info[1] != NULL)
+			{
+				if (unsetenv(info[1]) != 0)
+				{
+					perror("unsetenv");
+				}
+			}
+			else
+			{
+				fprintf(stderr, "Usage: unsetenv VARIABLE\n");
+			}
+		}
 		else
-			exit_status = EXIT_SUCCESS;
+		{
+			if (execute_file(info) == EXIT_FAILURE)
+				exit_status = 127;
+			else
+				exit_status = EXIT_SUCCESS;
+		}
+
 
 		for (i = 0; info[i] != NULL; i++)
 			free(info[i]);
