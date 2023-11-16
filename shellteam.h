@@ -27,6 +27,8 @@ char **mytoken(char *scrp);
 char *pathfinder(char *strings);
 char *merge_str(char *dest, char *src);
 char *scriptcpy(char *dest, char *src);
-int main_env();
+
+int my_setenv(const char *variable, const char *value, int overwrite);
+int my_unsetenv(const char *variable);
 
 #endif /* SHELLTEAM */
