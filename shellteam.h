@@ -27,5 +27,6 @@ char **mytoken(char *scrp);
 char *pathfinder(char *strings);
 char *merge_str(char *dest, char *src);
 char *scriptcpy(char *dest, char *src);
+int main_env();
 
 #endif /* SHELLTEAM */
