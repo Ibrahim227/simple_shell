@@ -1,4 +1,4 @@
-#include "shellteam.c"
+#include "shellteam.h"
 
 /**
 * scrp_dup - returs a pointer
@@ -21,7 +21,7 @@ char *scrp_dup(char *c)
 		return (NULL);
 
 	for (j = 0; j < len; j++)
-		ptr[j] = s[j];
+		ptr[j] = c[j];
 	ptr[len] = '\0';
 
 	return (ptr);

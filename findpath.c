@@ -20,21 +20,21 @@ char *pathfinder(char *strings)
 		return (NULL);
 	}
 	if (stat(strings, &cmd) == 0)
-		return (script_dup(strings));
+		return (scrp_dup(strings));
 
-	dupFilePath = script_dup(filepath);
+	dupFilePath = scrp_dup(filepath);
 	token = strtok(dupFilePath, delim);
 	while (token)
 	{
-		total_len = shell_length(token) + shell_length(strings) + 2;
+		total_len = shell_len(token) + shell_len(strings) + 2;
 		mypath = malloc(total_len);
 		if (mypath == NULL)
 			break;
 		else if (mypath != NULL)
 		{
 			scriptcpy(mypath, token);
-			str_merge(mypath, "/");
-			str_merge(mypath, strings);
+			merge_str(mypath, "/");
+			merge_str(mypath, strings);
 
 			if (stat(mypath, &cmd) == 0)
 			{

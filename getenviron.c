@@ -11,16 +11,16 @@ char *_getenv(char *name)
 	int i;
 	char **ptr = environ;
 
-	for (i = 0; ptr[i] != NULL, i++)
+	for (i = 0; ptr[i] != NULL; i++)
 	{
 		tok_flag = strtok(ptr[i], "=");
 		while (tok_flag)
 		{
 			if (compstr(tok_flag, name) == 0)
 			{
-				return (ptr[i] + myshell_len(name) + 1);
+				return (ptr[i] + shell_len(name) + 1);
 			}
-			token_flag = strtok(NULL, "=");
+			tok_flag = strtok(NULL, "=");
 		}
 	}
 	return (NULL);

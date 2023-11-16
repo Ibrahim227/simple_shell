@@ -14,6 +14,7 @@
 #define TRUE	2025
 #define FALSE	0
 
+extern char **environ;
 
 char *_getenv(char *name);
 int _atoi(char *c);

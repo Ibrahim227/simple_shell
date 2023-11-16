@@ -1,4 +1,4 @@
-#include "shellteam.c"
+#include "shellteam.h"
 
 /**
 * execute_file - executes file

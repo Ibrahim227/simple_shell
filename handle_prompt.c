@@ -1,4 +1,4 @@
-#include "shellteam.c"
+#include "shellteam.h"
 
 /**
 * main - entry poin
@@ -18,7 +18,7 @@ int main(int argc, char **argv, char **env)
 	while (TRUE)
 	{
 		if (isatty(STDIN_FILENO) == 1)
-			write(STDOUT_FILENO, blink, myshell_len(blink));
+			write(STDOUT_FILENO, blink, shell_len(blink));
 		readBytes = getline(&box, &shellSize, stdin);
 		if (readBytes == -1)
 		{
@@ -27,7 +27,7 @@ int main(int argc, char **argv, char **env)
 			exit(exit_status);
 		}
 		i = 0;
-		while (i < myshell_len(box) && box[i] != '\0' && (box[i] == ' '))
+		while (i < shell_len(box) && box[i] != '\0' && (box[i] == ' '))
 		{
 			i++;
 			continue;
@@ -48,7 +48,7 @@ int main(int argc, char **argv, char **env)
 		{
 			for (i = 0; environ[i] != NULL; i++)
 			{
-				write(1, environ[i], myshell_len(environ[i]));
+				write(1, environ[i], shell_len(environ[i]));
 				write(1, "\n", 1);
 			}
 			exit(EXIT_SUCCESS);
