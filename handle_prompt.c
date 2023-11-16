@@ -12,7 +12,7 @@ int main(int argc, char **argv, char **env)
 	char *blink = "($)", *box = NULL, **info = NULL;
 	size_t shellSize = 0;
 	ssize_t readBytes;
-	int i, exit_status = EXIT_SUCCESS;
+	long unsigned int i, exit_status = EXIT_SUCCESS;
 	(void) argc, (void) argv, (void) env;
 
 	while (TRUE)

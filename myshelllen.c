@@ -5,7 +5,7 @@
 * @scrp: str
 * Return: count
 */
-int shell_len(const char *scrp)
+size_t shell_len(const char *scrp)
 {
 	int index, count_up = 0;
 
