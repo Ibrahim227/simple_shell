@@ -3,12 +3,12 @@
 /**
 * _strtok - a custom func
 * @str: str
-* @delim:
+* @delim: delimiter
 * Return: pointer
 */
-static char *cutt = NULL;
 char *_strtok(char *str, char *delim)
 {
+	static char *cutt;
 	int idx;
 	char *tok;
 

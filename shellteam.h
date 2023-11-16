@@ -10,6 +10,10 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
+#define MAXIMUM_SCR	500
+#define TRUE	2025
+#define FALSE	0
+
 
 char *_getenv(char *name);
 int _atoi(char *c);
@@ -21,5 +25,6 @@ char *_strtok(char *str, char *delim);
 char **mytoken(char *scrp);
 char *pathfinder(char *strings);
 char *merge_str(char *dest, char *src);
+char *scriptcpy(char *dest, char *src);
 
 #endif /* SHELLTEAM */
