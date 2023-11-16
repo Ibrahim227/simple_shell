@@ -49,34 +49,3 @@ int my_unsetenv(const char *variable)
 	return (0);
 }
 
-/**
-* func_test - test man
-* @argc: arg var
-* @argv: arg var
-* Return: env
-*/
-int func_test(int argc, char **argv)
-{
-	if (argc < 4)
-	{
-		fprintf(stderr, "Usage: %s setenv, VARIABLE VALUE\n", argv[0]);
-		fprintf(stderr, "	%s unsetenv VARIABLE \n", argv[0]);
-		return (1);
-	}
-
-	if (strcmp(argv[1], "setenv") == 0)
-	{
-		return (my_seten(argv[2], arg[3], 1));
-	}
-	else if (strcmp(argv[1], "unsetenv") == 0)
-	{
-		return (my_unsetenv(argv[2]));
-	}
-	else
-	{
-		fprintf(stderr, "Error: Invalid cmd\n");
-		return (-1);
-	}
-	return (0);
-}
-
